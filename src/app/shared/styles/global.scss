@@ -1,0 +1,69 @@
+@import './signup.scss';
+@import './spacing.scss';
+
+html,
+body {
+  height: 100vh;
+  overflow: hidden;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.mat-button, .mat-icon-button, a {
+    cursor: pointer;
+}
+
+.main-container {
+  margin: 16px;
+
+  @media screen and (max-width: 600px) {
+      margin: 8px;
+  }
+}
+
+
+.height-100vh {
+  height: 100vh;
+}
+
+.dark-blue {
+  background-color: rgb(100, 27, 196);
+}
+.dark-grey {
+  background-color: #162436;
+}
+.medium-grey {
+  background-color: #293C55;
+}
+
+.active {
+  background: rgba(0, 0, 0, 0.05);
+  color: #F58634;
+}
+
+.center {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.text-normal {
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.relative {
+  position: relative;
+}
+
+.w-100 {
+  width: 100%;
+}

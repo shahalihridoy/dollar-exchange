@@ -1,0 +1,56 @@
+<div
+  [perfectScrollbar]="{}"
+  class="height-100vh medium-grey"
+  fxLayout="row wrap"
+  fxLayoutAlign="center center"
+>
+  <mat-card class="p-24 mat-elevation-z4" fxFlex="30" fxFlex.lt-sm="98" fxFlex.lt-md="50" fxLayout="column">
+
+    <div class="signup-logo center pb-16">
+      <img src="./assets/images/logo.png" alt="logo">
+      <h2 class="m-0 mb-16 mt-8">Sign In</h2>
+    </div>
+
+    <form  fxLayout="column" [formGroup]="signupForm" class="signup4-form white" (ngSubmit)="onSubmit()">
+  
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input
+              matInput
+              formControlName="email"
+              type="email"
+              name="email"
+              placeholder="Email"
+            />
+          </mat-form-field>
+  
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              formControlName="password"
+              type="password"
+              name="password"
+              placeholder="********"
+            />
+          </mat-form-field>
+  
+          <mat-checkbox formControlName="agreed"
+          >I agree with terms and condtions</mat-checkbox
+        >
+        
+        <div fxLayout="row wrap" fxLayoutAlign="start center" style="margin-top: 20px;">
+          <button [disabled]="isSigningUp" mat-flat-button color="primary">Sign In</button>
+          <span style="padding: 0px 8px 0px 16px;">or</span>
+          <a mat-button color="accent" class="font-weight-bold mat-color-primary" routerLink="/sessions/signup">Sign Up</a>
+        </div>
+  
+        <!-- other signin options -->
+        <!-- <div class="mt-24" fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="16px">
+          <button class="mat-elevation-z3" mat-icon-button (click)="signinWithGoogle()">
+              <mat-icon svgIcon="google"></mat-icon>
+          </button>
+        </div> -->
+      </form>
+  </mat-card>
+</div>

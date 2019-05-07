@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~perfect-scrollbar/css/perfect-scrollbar.css";
+@import "~swiper/dist/css/swiper.min.css";
+
+// add this theme if you want
+@import "./app/shared/styles/theme.scss";
+
+@import "./app/shared/styles/global.scss";
+
+.bullet-active {
+  opacity: 1 !important;
+  transform: scale(2) !important;
+  background: red !important;
+}
+
+.swiper-pagination-bullet {
+  transition: transform 500ms ease-out;
+  outline: none;
+}
+
+.swiper-pagination-bullet-active {
+  transform: scale(1.5);
+}

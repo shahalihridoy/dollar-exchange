@@ -1,0 +1,29 @@
+<perfect-scrollbar class="ps" style="height: 100vh;" [config]="">
+  <div fxLayout="column" class="sidenav-container">
+    
+    <!-- close icon -->
+    <div class="close-button">
+      <button mat-icon-button color="warn" (click)="sidenav.toggle()">
+        <mat-icon class="mat-18">close</mat-icon>
+      </button>
+    </div>
+
+    <!-- logo with name -->
+    <div fxLayout="column" fxLayoutAlign="start center" class="logo-name">
+      <img src="./assets/images/logo.png" alt="small logo">
+      <h4>First Quantam Minerals</h4>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <!-- navigation links -->
+    <div fxLayout="column" fxLayoutAlign="start" class="sidenav-link">
+      <!-- <a routerLink="" routerLinkActive="active" mat-button (click)="sidenav.toggle()">Home</a> -->
+      <a routerLink="/car-list" routerLinkActive="active" mat-button (click)="sidenav.toggle()">car list</a>
+      <a routerLink="/inspection-list" routerLinkActive="active" mat-button (click)="sidenav.toggle()">inspection list</a>
+      <a *ngIf="!(user | async)" routerLink="/sessions/signup" routerLinkActive="active" mat-button (click)="sidenav.toggle()">Sign up</a>
+      <a *ngIf="!(user | async)" routerLink="/sessions/signin" routerLinkActive="active" mat-button (click)="sidenav.toggle()">sign in</a>
+      <a *ngIf="(user | async)" mat-button (click)="signout()">sign out</a>
+    </div>
+  </div>
+</perfect-scrollbar>

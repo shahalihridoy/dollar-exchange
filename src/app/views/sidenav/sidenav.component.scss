@@ -1,0 +1,29 @@
+.sidenav-container {
+    padding: 16px;
+    height: 100vh !important;
+}
+
+.close-button {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+}
+
+.logo-name {
+    margin-top: 36px;
+    img {
+        width: 50%;
+    }
+    h4 {
+        margin: 8px 0px 16px 0px;
+    }
+}
+
+.sidenav-link {
+    margin-top: 16px;
+
+    & > a {
+        text-transform: uppercase;
+        text-align: left;
+    }
+}
