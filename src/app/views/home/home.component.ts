@@ -1,26 +1,38 @@
-import { Component, OnInit, HostListener, ViewChild, AfterViewInit } from '@angular/core';
-import { of } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { SharedService } from 'src/app/shared/services/shared.service';
+import { PerfectScrollbarDirective } from 'ngx-perfect-scrollbar';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
 
-  constructor() { }
+  @ViewChild(PerfectScrollbarDirective) perfectScrollbar: PerfectScrollbarDirective;
+  rejectCall: boolean = false;
 
-  getScrollHeight(event) {
-    let a = of(event).pipe(debounceTime(2000));
-    a.subscribe(res => {
-      let {scrollTop} = res.target;
-        console.log(scrollTop);
-        
+  constructor(private sharedService: SharedService) {
+   }
+
+  getScrollHeight(event: any) {
+    if(!this.rejectCall) {
+      this.rejectCall = true;
+      setTimeout(() => {
+        let { scrollTop } = event.target;
+        scrollTop > 0 ?
+          this.sharedService.topBarListener.next(true):
+          this.sharedService.topBarListener.next(false)
+          this.rejectCall = false;
+      }, 250);
     }
-    );
-  }
-  ngOnInit() {
   }
 
+  ngOnInit() {
+    this.sharedService.perfectScrollbar = this.perfectScrollbar;
+  }
+
+  ngAfterViewInit() {
+
+  }
 }

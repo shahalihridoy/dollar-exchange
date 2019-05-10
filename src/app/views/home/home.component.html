@@ -9,7 +9,7 @@
   <!-- main container -->
   <mat-sidenav-content #content>
 
-    <perfect-scrollbar class="ps" style="height: 100vh;" [config]="" (psScrollY)="getScrollHeight($event)">
+    <div class="ps" style="height: 100vh;" [perfectScrollbar]="" (scroll)="getScrollHeight($event)">
 
       <!-- header -->
       <app-header [sidenav]="sidenav"></app-header>
@@ -19,54 +19,13 @@
 
 
 
-      <div style="height: 600px; position: relative;">
-        <div class="swiper-container" [swiper]={}>
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <!-- Required swiper-lazy class and image source specified in data-src attribute -->
-              <img data-src="http://lorempixel.com/1600/1200/nature/1/" class="swiper-lazy">
-              <!-- Preloader image -->
-              <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-            </div>
-            <div class="swiper-slide">
-              <img data-src="http://lorempixel.com/1600/1200/nature/2/" class="swiper-lazy">
-              <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-            </div>
-            <div class="swiper-slide">
-              <img data-src="http://lorempixel.com/1600/1200/nature/3/" class="swiper-lazy">
-              <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-            </div>
-            <div class="swiper-slide">
-              <img data-src="http://lorempixel.com/1600/1200/nature/4/" class="swiper-lazy">
-              <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-            </div>
-            <div class="swiper-slide">
-              <img data-src="http://lorempixel.com/1600/1200/nature/5/" class="swiper-lazy">
-              <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-            </div>
-            <div class="swiper-slide">
-              <img data-src="http://lorempixel.com/1600/1200/nature/6/" class="swiper-lazy">
-              <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-            </div>
-
-          </div>
-
-          <!-- padination -->
-          <div class="swiper-pagination swiper-pagination-white"></div>
-
-          <!-- Navigation -->
-          <!-- <button class="prev" mat-mini-fab>
-            <mat-icon class="mat-18">navigate_before</mat-icon>
-          </button>
-          <button class="next" mat-mini-fab>
-            <mat-icon class="mat-18">navigate_next</mat-icon>
-          </button> -->
-        </div>
+      <div style="height: 570px;" class="relative">
+        <app-carousel></app-carousel>
       </div>
 
+      <app-contact></app-contact>
 
-
-    </perfect-scrollbar>
+    </div>
 
   </mat-sidenav-content>
 

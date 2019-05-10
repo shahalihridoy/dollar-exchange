@@ -8,12 +8,10 @@ import { MatSidenav } from "@angular/material";
 import { Subscription } from "rxjs";
 import { SharedService } from "src/app/shared/services/shared.service";
 import { FormControl } from "@angular/forms";
-import { debounceTime } from "rxjs/operators";
 import {
   trigger,
   transition,
   style,
-  state,
   animate
 } from "@angular/animations";
 import { AuthService } from "src/app/shared/services/auth.service";
@@ -55,6 +53,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   sub: Subscription;
 
   searchControl: FormControl = new FormControl("");
+  topBarClass: string = "header";
 
   constructor(
     private router: Router,
@@ -63,14 +62,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    
     if (!this.sub) {
-      this.service.updateSearchTerm("");
-    this.sub = this.searchControl.valueChanges
-      .pipe(debounceTime(250))
-      .subscribe(term => {
-        this.service.updateSearchTerm(term);
-      });
+      this.sub = this.service.topBarListener.subscribe(isFixed => {
+        isFixed ? this.topBarClass = "header-fixed" : this.topBarClass = "header"
+      })
     }
 
     // throw new Error("Method not implemented.");
@@ -88,5 +83,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.authService.logout().then(() => {
       this.router.navigateByUrl("/sessions/signin");
     });
+  }
+
+  scrollTo(id:string) {
+    this.service.perfectScrollbar.scrollToElement(`#${id}`,0,500);
   }
 }

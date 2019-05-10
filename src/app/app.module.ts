@@ -23,6 +23,11 @@ import { HomeComponent } from './views/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { ContactComponent } from './views/contact/contact.component';
+import { PricingComponent } from './views/pricing/pricing.component';
+import { FooterComponent } from './views/footer/footer.component';
+import { ExchangeComponent } from './views/exchange/exchange.component';
+import { CarouselComponent } from './views/carousel/carousel.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -41,12 +46,14 @@ const swiper_navigation: SwiperNavigationInterface = {
 const swiper_pagination: SwiperPaginationInterface = {
   el: ".swiper-pagination",
   type: "bullets",
+  bulletActiveClass: "bullet-active",
   clickable: true
 }
 
 const swiper_config: SwiperConfigInterface = {
   autoplay: {
-    delay: 6000
+    delay: 6000,
+    disableOnInteraction: false
   },
   initialSlide: 0,
   slidesPerView: 1,
@@ -76,7 +83,12 @@ const perfect_scroll_provider =     {
     AppComponent,
     SidenavComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    ContactComponent,
+    PricingComponent,
+    FooterComponent,
+    ExchangeComponent,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,

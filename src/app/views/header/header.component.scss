@@ -1,3 +1,5 @@
+@import "../../shared/styles/mixins.scss";
+
 .mobile-toolbar {
   color: white;
   padding-left: 8px;
@@ -91,19 +93,36 @@
   margin: 0 auto;
   text-transform: capitalize;
 
-  padding: 22px 16px;
-  transition: padding 0.3s linear;
-  -webkit-transition: padding 0.3s linear;
-
   a {
     font-size: 14px;
     color: inherit;
     padding: 16px 8px;
     font-weight: 400;
   }
+  z-index: 1000;
+}
+
+.header {
+  transition: padding 0.3s bezier();
+  -webkit-transition: padding 0.3s bezier();
+  padding: 22px 0px;
+  background: #fff;
 }
 
 .header-fixed {
   position: fixed;
+  width: 100%;
+  padding: 8px 0px;
+  background: #fff;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
+  z-index: 1000;
+  @include keyframe(slide_down) {
+    from {
+      top: -20px;
+    }
+    to {
+      top: 0px;
+    }
+  }
+  animation: slide_down 250ms bezier();
 }

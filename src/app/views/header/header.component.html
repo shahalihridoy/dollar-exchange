@@ -8,7 +8,7 @@
 
 
 <!-- header for large screent -->
-<div fxHide.lt-md style="background: #fff;">
+<div fxHide.lt-md class={{topBarClass}}>
     <div class="pc-nav-bar" fxLayout="row" fxLayoutAlign="start center">
         <!-- <a routerLink="" routerLinkActive="active" mat-button>Home</a> -->
         <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 1 auto" fxLayoutGap="24px">
@@ -20,7 +20,7 @@
             <a routerLink="/inspection-list" routerLinkActive="active" mat-ripple><strong>inspection</strong></a>
             <a routerLink="/inspection-list" routerLinkActive="active" mat-ripple><strong>proof</strong></a>
             <a routerLink="/inspection-list" routerLinkActive="active" mat-ripple><strong>policy</strong></a>
-            <a routerLink="/inspection-list" routerLinkActive="active" mat-ripple><strong>contact</strong></a>
+            <a (click)="scrollTo('contact')" routerLinkActive="active" mat-ripple><strong>contact</strong></a>
         </div>
 
         <!-- social links -->
