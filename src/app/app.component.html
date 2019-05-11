@@ -1,1 +1,24 @@
-<router-outlet></router-outlet>
+<mat-sidenav-container>
+
+    <!-- side nav -->
+    <mat-sidenav class="sidenav" [mode]="'over'" align="start" [fixedInViewport]="true" [fixedTopGap]="0"
+        [fixedBottomGap]="0" scrollable #sidenav>
+        <app-sidenav [sidenav]="sidenav"></app-sidenav>
+    </mat-sidenav>
+
+    <!-- main container -->
+    <mat-sidenav-content #content>
+
+        <div class="ps" style="height: 100vh;" [perfectScrollbar]="" (scroll)="getScrollHeight($event)">
+
+            <!-- header -->
+            <app-header [sidenav]="sidenav"></app-header>
+
+            <!-- main content -->
+            <router-outlet></router-outlet>
+
+        </div>
+
+    </mat-sidenav-content>
+
+</mat-sidenav-container>

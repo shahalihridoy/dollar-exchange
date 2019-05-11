@@ -26,7 +26,6 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { ContactComponent } from './views/contact/contact.component';
 import { PricingComponent } from './views/pricing/pricing.component';
 import { FooterComponent } from './views/footer/footer.component';
-import { ExchangeComponent } from './views/exchange/exchange.component';
 import { CarouselComponent } from './views/carousel/carousel.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -87,7 +86,6 @@ const perfect_scroll_provider =     {
     ContactComponent,
     PricingComponent,
     FooterComponent,
-    ExchangeComponent,
     CarouselComponent
   ],
   imports: [
@@ -99,7 +97,6 @@ const perfect_scroll_provider =     {
     AngularFireModule.initializeApp(environment.firebaseConfig),
     MaterialModule,
     FlexLayoutModule,
-    PerfectScrollbarModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,

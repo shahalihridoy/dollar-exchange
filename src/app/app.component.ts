@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import * as AOS from 'aos';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { SharedService } from 'src/app/shared/services/shared.service';
+import { PerfectScrollbarDirective } from 'ngx-perfect-scrollbar';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,35 @@ import * as AOS from 'aos';
 export class AppComponent implements OnInit{
   title = 'dollar-exchange';
 
+  @ViewChild(PerfectScrollbarDirective) perfectScrollbar: PerfectScrollbarDirective;
+  rejectCall: boolean = false;
+
+  constructor(private sharedService: SharedService) {
+   }
+
+  getScrollHeight(event: any) {
+    if(!this.rejectCall) {
+      this.rejectCall = true;
+      setTimeout(() => {
+        let { scrollTop } = event.target;
+        scrollTop > 0 ?
+          this.sharedService.topBarListener.next(true):
+          this.sharedService.topBarListener.next(false)
+          this.rejectCall = false;
+      }, 250);
+    }
+
+    // let timer;
+    // clearTimeout(timer);
+    // timer = setTimeout(() => {
+    //           let { scrollTop } = event.target;
+    //     scrollTop > 0 ?
+    //       this.sharedService.topBarListener.next(true):
+    //       this.sharedService.topBarListener.next(false)
+    // }, 250);
+  }
+
   ngOnInit() {
-    AOS.init();
+    this.sharedService.perfectScrollbar = this.perfectScrollbar;
   }
 }

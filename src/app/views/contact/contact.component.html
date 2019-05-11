@@ -1,5 +1,25 @@
 <div class="section light-grey" id="contact">
   <div class="container">
     <h2>Leave Us a Message</h2>
+
+    <div>
+      <form fxLayout="column" (ngSubmit)="sendMessage()" [formGroup]="contactForm">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Name</mat-label>
+          <input formControlName="name" matInput type="text" placeholder="Name" />
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input formControlName="email" type="email" matInput placeholder="Email" />
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Message</mat-label>
+          <textarea formControlName="message" matInput matTextareaAutosize placeholder="Your message..."></textarea>
+        </mat-form-field>
+        <button mat-fab color="accent">
+          <mat-icon class="mat-18">send</mat-icon>
+        </button>
+      </form>
+    </div>
   </div>
 </div>
