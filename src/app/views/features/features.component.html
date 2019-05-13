@@ -1,0 +1,15 @@
+<div class="section light-grey" id="service">
+  <div class="container">
+    <h2>Our Services</h2>
+    <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="32px" fxLayoutGap.lt-sm="16px">
+      <div *ngFor="let item of cardList" fxFlex="1 1 0">
+        <mat-card class="feature-card text-center">
+          <mat-card-content>
+            <mat-icon class="feature-icon">{{item.icon}}</mat-icon>
+            <h3>{{item.text}}</h3>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

@@ -23,7 +23,7 @@ export class Signin4Component implements OnInit {
     private authService: AuthService,
     private afAuth: AngularFireAuth,
     private snackbar: MatSnackBar,
-    private fb: FormBuilder
+    private fb: FormBuilder,
   ) {}
 
   ngOnInit() {
@@ -52,7 +52,7 @@ export class Signin4Component implements OnInit {
         })
         .then(() => {
           if (this.afAuth.user) {
-            this.router.navigateByUrl("car-list");
+            this.router.navigateByUrl("");
           }
 
           this.isSigningUp = false;
@@ -64,7 +64,7 @@ export class Signin4Component implements OnInit {
 
 signinWithGoogle() {
   this.authService.signInWithGoogle().then(res => {
-    this.router.navigateByUrl("/car-list");
+    this.router.navigateByUrl("");
   });
 }
 }

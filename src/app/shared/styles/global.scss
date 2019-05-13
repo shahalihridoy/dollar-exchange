@@ -5,6 +5,7 @@ html,
 body {
   height: 100vh;
   overflow: hidden;
+  background: #ffffff;
 }
 body {
   margin: 0;
@@ -53,9 +54,8 @@ a {
   color: #f58634 !important;
 }
 
-.center {
+.text-center {
   text-align: center;
-  vertical-align: middle;
 }
 
 .text-normal {

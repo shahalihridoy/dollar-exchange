@@ -27,6 +27,7 @@ import { ContactComponent } from './views/contact/contact.component';
 import { PricingComponent } from './views/pricing/pricing.component';
 import { FooterComponent } from './views/footer/footer.component';
 import { CarouselComponent } from './views/carousel/carousel.component';
+import { FeaturesComponent } from './views/features/features.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -86,7 +87,8 @@ const perfect_scroll_provider =     {
     ContactComponent,
     PricingComponent,
     FooterComponent,
-    CarouselComponent
+    CarouselComponent,
+    FeaturesComponent
   ],
   imports: [
     BrowserModule,

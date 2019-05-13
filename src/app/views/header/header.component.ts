@@ -67,6 +67,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
         isFixed ? this.topBarClass = "header-fixed" : this.topBarClass = "header"
       })
     }
+    else this.sub.unsubscribe();
 
     // throw new Error("Method not implemented.");
   }
@@ -81,11 +82,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   signout() {
     this.authService.logout().then(() => {
-      this.router.navigateByUrl("/sessions/signin");
+      this.router.navigateByUrl("");
     });
   }
 
   scrollTo(id:string) {
-    this.service.perfectScrollbar.scrollToElement(`#${id}`,-80,500);
+    this.service.perfectScrollbar.scrollToElement(`#${id}`,-104,500);
   }
 }

@@ -7,7 +7,7 @@ import { PerfectScrollbarDirective } from 'ngx-perfect-scrollbar';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'dollar-exchange';
 
   @ViewChild(PerfectScrollbarDirective) perfectScrollbar: PerfectScrollbarDirective;
@@ -17,25 +17,25 @@ export class AppComponent implements OnInit{
    }
 
   getScrollHeight(event: any) {
-    if(!this.rejectCall) {
-      this.rejectCall = true;
-      setTimeout(() => {
-        let { scrollTop } = event.target;
-        scrollTop > 0 ?
-          this.sharedService.topBarListener.next(true):
-          this.sharedService.topBarListener.next(false)
-          this.rejectCall = false;
-      }, 250);
-    }
-
-    // let timer;
-    // clearTimeout(timer);
-    // timer = setTimeout(() => {
-    //           let { scrollTop } = event.target;
-    //     scrollTop > 0 ?
+    // if(!this.rejectCall) {
+    //   this.rejectCall = true;
+    //   setTimeout(() => {
+    //     let { scrollTop } = event.target;
+    //     scrollTop > 100 ?
     //       this.sharedService.topBarListener.next(true):
     //       this.sharedService.topBarListener.next(false)
-    // }, 250);
+    //       this.rejectCall = false;
+    //   }, 250);
+    // }
+
+    let timer;
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+              let { scrollTop } = event.target;
+        scrollTop > 100 ?
+          this.sharedService.topBarListener.next(true):
+          this.sharedService.topBarListener.next(false)
+    }, 250);
   }
 
   ngOnInit() {

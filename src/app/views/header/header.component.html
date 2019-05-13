@@ -10,25 +10,27 @@
 <!-- header for large screent -->
 <div fxHide.lt-md class={{topBarClass}}>
     <div class="pc-nav-bar" fxLayout="row" fxLayoutAlign="start center">
-        <!-- <a routerLink="" routerLinkActive="active" mat-button>Home</a> -->
+        <!-- <a routerLink="" mat-button>Home</a> -->
         <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 1 auto" fxLayoutGap="24px">
-            <div class="pointer" routerLink="" fxLayout="row" fxLayoutAlign="start center">
+            <div class="home-link" routerLink="" fxLayout="row" fxLayoutAlign="start center">
                 <img style="height: 32px; width: auto;" class="m-0 p-0" src="/assets/images/logo.png" alt="logo">
                 <h3 class="m-0 pl-8 uppercase">Dollar Exchange</h3>
             </div>
-            <a routerLink="/car-list" routerLinkActive="active" mat-ripple><strong>car list</strong></a>
-            <a routerLink="/inspection-list" routerLinkActive="active" mat-ripple><strong>inspection</strong></a>
-            <a routerLink="/inspection-list" routerLinkActive="active" mat-ripple><strong>proof</strong></a>
-            <a (click)="scrollTo('pricing')" routerLinkActive="active" mat-ripple><strong>rate</strong></a>
-            <a (click)="scrollTo('contact')" routerLinkActive="active" mat-ripple><strong>contact</strong></a>
+            <a routerLink="" mat-ripple><strong>home</strong></a>
+            <!-- <a routerLink="/inspection-list" mat-ripple><strong>proof</strong></a> -->
+            <a (click)="scrollTo('service')" mat-ripple><strong>service</strong></a>
+            <a (click)="scrollTo('pricing')" mat-ripple><strong>rate</strong></a>
+            <a routerLink="/exchange/buy" mat-ripple><strong>buy</strong></a>
+            <a routerLink="/exchange/sell" mat-ripple><strong>sell</strong></a>
+            <a (click)="scrollTo('contact')" mat-ripple><strong>contact</strong></a>
         </div>
 
         <!-- social links -->
         <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="16px">
-            <a *ngIf="!(user | async)" routerLink="/sessions/signin" routerLinkActive="active" mat-ripple>
+            <a *ngIf="!(user | async)" routerLink="/sessions/signin" mat-ripple>
                 <strong>sign in</strong>
             </a>
-            <a *ngIf="!(user | async)" routerLink="/sessions/signup" routerLinkActive="active" mat-ripple>
+            <a *ngIf="!(user | async)" routerLink="/sessions/signup" mat-ripple>
                 <strong>sign up</strong>
             </a>
             <a *ngIf="(user | async)" mat-ripple (click)="signout()">

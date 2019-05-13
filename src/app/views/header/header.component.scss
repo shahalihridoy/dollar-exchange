@@ -10,83 +10,6 @@
   letter-spacing: 1px;
 }
 
-.menu-panel {
-  background: red !important;
-  width: 1000px !important;
-}
-
-.header-container {
-  position: relative;
-  width: 100%;
-
-  background: rgb(100, 27, 196);
-  background: -moz-linear-gradient(-45deg, rgba(100, 27, 196, 1) 0%, rgba(56, 125, 209, 1) 100%);
-  background: -webkit-linear-gradient(-45deg, rgba(100, 27, 196, 1) 0%, rgba(56, 125, 209, 1) 100%);
-  background: linear-gradient(135deg, rgba(100, 27, 196, 1) 0%, rgba(56, 125, 209, 1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#641bc4', endColorstr='#387dd1',GradientType=1 );
-
-  img {
-    padding-left: 25%;
-    width: 40%;
-    margin: 24px 0px;
-  }
-
-  @media screen and (max-width: 768px) {
-    img {
-      padding-left: 10%;
-    }
-  }
-}
-
-.search-box-pc {
-  border-radius: 24px;
-  background: white;
-  overflow: hidden;
-  position: absolute;
-  margin-bottom: 88px;
-  bottom: 0;
-  right: 24px;
-  width: 25%;
-  z-index: 1;
-
-  .mat-icon-button {
-    margin-left: 8px;
-  }
-  input[type="text"] {
-    width: calc(100% - 52px);
-    padding: 12px 0px;
-    border: none;
-    outline: none;
-    font-size: 18px;
-    box-sizing: border-box;
-  }
-
-  @media screen and (max-width: 768px) {
-    & {
-      width: 35%;
-    }
-  }
-}
-
-.search-box-mobile {
-  border-radius: 24px;
-  background: white;
-  overflow: hidden;
-
-  input[type="text"] {
-    padding: 12px 0px;
-    border: none;
-    outline: none;
-    font-size: 18px;
-    box-sizing: border-box;
-  }
-
-  .mat-icon-button {
-    color: rgba(#000000, 0.87);
-    margin-left: 8px;
-  }
-}
-
 .pc-nav-bar {
   width: 100%;
   max-width: 1170px;
@@ -99,14 +22,23 @@
     padding: 16px 8px;
     font-weight: 400;
   }
+
+  .home-link {
+    cursor: pointer;
+    outline: none;
+  }
+
   z-index: 1000;
 }
 
 .header {
+  // position: fixed;
+  // width: 100%;
+  // background: #fff;
   transition: padding 0.3s bezier();
   -webkit-transition: padding 0.3s bezier();
   padding: 22px 0px;
-  background: #fff;
+  // z-index: 1000;
 }
 
 .header-fixed {
