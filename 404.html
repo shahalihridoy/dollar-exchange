@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Dollar Exchange</title>
+  <base href="https://shahalihridoy.github.io/dollar-exchange">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- style -->
+  <style>
+    .app-loader {
+      height: 100vh !important;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      position: relative;
+      margin: auto;
+    }
+
+    .double-bounce1,
+    .double-bounce2 {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      opacity: 0.6;
+      position: absolute;
+      top: 0;
+      left: 0;
+      -webkit-animation: sk-bounce 2s infinite ease-in-out;
+      animation: sk-bounce 2s infinite ease-in-out;
+    }
+
+    .double-bounce2 {
+      -webkit-animation-delay: -1s;
+      animation-delay: -1s;
+    }
+
+    @-webkit-keyframes sk-bounce {
+
+      0%,
+      100% {
+        -webkit-transform: scale(0);
+      }
+
+      50% {
+        -webkit-transform: scale(1);
+      }
+    }
+
+    @keyframes sk-bounce {
+
+      0%,
+      100% {
+        transform: scale(0);
+        -webkit-transform: scale(0);
+      }
+
+      50% {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+      }
+    }
+  </style>
+<link rel="stylesheet" href="styles.2afcb8dd915c099962d4.css"></head>
+
+<body>
+  <app-root>
+    <div class="app-loader">
+      <div class="spinner">
+        <div class="double-bounce1 mat-bg-primary" style="background: #fcc02e"></div>
+        <div class="double-bounce2 mat-bg-accent" style="background: #03a9f4"></div>
+      </div>
+    </div>
+  </app-root>
+<script type="text/javascript" src="runtime.661bc7676ebd5672cc4b.js"></script><script type="text/javascript" src="es2015-polyfills.c5dd28b362270c767b34.js" nomodule></script><script type="text/javascript" src="polyfills.8bbb231b43165d65d357.js"></script><script type="text/javascript" src="main.8014fd7455f8fcee3eb8.js"></script></body>
+
+</html>
