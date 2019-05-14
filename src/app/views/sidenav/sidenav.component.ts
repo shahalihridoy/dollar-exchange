@@ -1,31 +1,53 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { MatSidenav } from '@angular/material';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { AuthService } from 'src/app/shared/services/auth.service';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
+import { SharedService } from 'src/app/shared/services/shared.service';
+import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.scss']
 })
-export class SidenavComponent implements OnInit {
+export class SidenavComponent implements OnInit, OnDestroy {
 
   @Input('sidenav') sidenav: MatSidenav;
+  routeSub: Subscription;
+  showOptions: boolean = true;
   
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService,private service: SharedService, private router: Router) { }
 
   ngOnInit() {
+    if(!this.routeSub) {
+      this.routeSub = this.router.events.pipe(
+        filter(event => event instanceof NavigationEnd)  
+      ).subscribe((event: NavigationEnd) => {
+        if(!(event.url as string).includes("exchange"))
+          this.showOptions = true;
+        else this.showOptions = false;
+      });
+      
+    } else this.routeSub.unsubscribe();
+  }
 
+  ngOnDestroy(): void {
+    if(this.routeSub) this.routeSub.unsubscribe();
   }
 
   signout() {
     this.authService.logout();
     this.sidenav.toggle();
-    this.router.navigateByUrl("/sessions/signin");
+    this.router.navigateByUrl("");
   }
 
   get user() {
     return this.authService.userObservable;
+  }
+
+  scrollTo(id:string) {
+    this.sidenav.toggle();
+    this.service.perfectScrollbar.scrollToElement(`#${id}`,0,500);
   }
 }

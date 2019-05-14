@@ -16,7 +16,7 @@
           <mat-label>Message</mat-label>
           <textarea formControlName="message" matInput matTextareaAutosize placeholder="Your message..."></textarea>
         </mat-form-field>
-        <button mat-fab color="accent">
+        <button mat-fab color="accent" [disabled]="disableSend">
           <mat-icon class="mat-18">send</mat-icon>
         </button>
       </form>

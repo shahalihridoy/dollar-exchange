@@ -2,44 +2,36 @@
   <div class="container">
     <h2>Dollar Rate</h2>
     <div fxLayout="column" fxLayoutGap="32px">
-      <div class="light-grey p-16" fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="32px">
-        <div>Buying Rate</div>
+      <div class="p-16" fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="start center" fxLayoutGap="32px">
+        <h3>Buying Rate</h3>
         <div fxLayout="column" fxFlex="1 1 0">
           <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="py-24 ">
-            <div>skrill</div>
-            <div>bkash</div>
-            <div>rocket</div>
+            <strong>Dollar Type</strong>
+            <strong>bKash</strong>
+            <strong>Rocket</strong>
           </div>
-          <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="py-24">
-            <div>skrill</div>
-            <div>bkash</div>
-            <div>rocket</div>
-          </div>
-          <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="py-24">
-            <div>skrill</div>
-            <div>bkash</div>
-            <div>rocket</div>
+          <div *ngFor="let fee of buyingFeeList" fxLayout="row" fxLayoutAlign="space-between center" class="py-24">
+            <div fxFlex="1 1 0" class="px-4">{{fee.type}}</div>
+            <div fxFlex="1 1 0" class="px-4 text-center">{{fee.bkash}}</div>
+            <div fxFlex="1 1 0" class="px-4 text-right">{{fee.rocket}}</div>
           </div>
         </div>
       </div>
 
-      <div class="light-grey p-16" fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="32px">
-        <div>Selling Rate</div>
+      <div class="p-16" fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="start center" fxLayoutGap="32px">
+        <h3>Selling Rate</h3>
         <div fxLayout="column" fxFlex="1 1 0">
-          <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="py-24 ">
-            <div>skrill</div>
-            <div>bkash</div>
-            <div>rocket</div>
+          <div fxLayout="row wrap" fxLayoutAlign="space-around center" class="py-24 ">
+            <strong>Dollar Type</strong>
+            <strong>Rate</strong>
           </div>
-          <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="py-24">
-            <div>skrill</div>
-            <div>bkash</div>
-            <div>rocket</div>
+          <div fxLayout="row wrap" fxLayoutAlign="space-around center" class="py-24">
+            <div>Skrill</div>
+            <div>{{(exchangeRate | async)?.sell}}</div>
           </div>
-          <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="py-24">
-            <div>skrill</div>
-            <div>bkash</div>
-            <div>rocket</div>
+          <div fxLayout="row wrap" fxLayoutAlign="space-around center" class="py-24">
+            <div>Neteller</div>
+            <div>{{(exchangeRate | async)?.sell}}</div>
           </div>
         </div>
       </div>

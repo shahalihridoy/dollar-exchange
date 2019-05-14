@@ -1,3 +1,86 @@
-<p>
-  sell works!
-</p>
+<div class="section">
+  <div class="container">
+    <mat-vertical-stepper #stepper linear>
+
+      <mat-step [stepControl]="firstFormGroup" label="Payment Method" state="balance">
+        <form fxLayout="column" [formGroup]="firstFormGroup">
+          <ng-template matStepLabel>Payment Details</ng-template>
+
+          <mat-form-field>
+            <mat-select #receivingMethod placeholder="Payment Method" formControlName="from">
+              <mat-option value="skrill">Skrill</mat-option>
+              <mat-option value="neteller">Neteller</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-select placeholder="Receiving Method" formControlName="to">
+              <mat-option value="bkash">bKash</mat-option>
+              <mat-option value="rocket">Rocket</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Amount</mat-label>
+            <input matInput type="number" placeholder="100" formControlName="amount">
+          </mat-form-field>
+
+          <mat-form-field *ngIf="Amount" class="full-width" appearance="outline">
+            <mat-label>You will get $ {{Amount ? Amount/(exchangeRate|async)?.buy : 0}}</mat-label>
+            <input matInput type="number" placeholder="100" readonly="true">
+          </mat-form-field>
+
+          <div>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="secondFormGroup" label="Transaction Details" state="payment">
+        <form fxLayout="column" [formGroup]="secondFormGroup" (ngSubmit)="requestSell()">
+          <ng-template matStepLabel>Transaction Details</ng-template>
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Recipient {{To}} Number</mat-label>
+            <input matInput type="text" placeholder="01XXXXXXXXX" formControlName="sender">
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Sender {{From}} Email</mat-label>
+            <input matInput type="email" placeholder="dollar-exchange@xmail.com" formControlName="email">
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Contact Number</mat-label>
+            <input matInput type="text" placeholder="01XXXXXXXXX" formControlName="contact">
+          </mat-form-field>
+          <!-- <div>
+              <button mat-button matStepperNext>Next</button>
+            </div> -->
+
+          <div class="mt-16">
+            <button mat-button type="button" matStepperPrevious>Back</button>
+            <button mat-button type="button" (click)="stepper.reset()">Reset</button>
+            <button mat-raised-button matStepperNext color="primary">Submit</button>
+          </div>
+
+        </form>
+      </mat-step>
+
+
+      <mat-step label="Done" state="done">
+        <ng-template matStepLabel>Done</ng-template>
+        Your request is under process. We will contact you shortly
+      </mat-step>
+
+      <!-- Icon overrides. -->
+      <ng-template matStepperIcon="balance">
+        <mat-icon>account_balance</mat-icon>
+      </ng-template>
+      <ng-template matStepperIcon="payment">
+        <mat-icon>payment</mat-icon>
+      </ng-template>
+      <ng-template matStepperIcon="done">
+        <mat-icon>done</mat-icon>
+      </ng-template>
+
+    </mat-vertical-stepper>
+  </div>
+</div>

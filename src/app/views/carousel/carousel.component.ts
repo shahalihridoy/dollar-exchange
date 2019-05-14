@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from 'src/app/shared/services/shared.service';
 
 @Component({
   selector: 'app-carousel',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarouselComponent implements OnInit {
 
-  constructor() { }
+  sliderList: any = null;
+
+  constructor(private service: SharedService) { }
 
   ngOnInit() {
+    this.sliderList = this.service.getSliderImageList;
   }
 
 }

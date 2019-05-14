@@ -6,6 +6,8 @@ import { auth } from 'firebase/app';
   providedIn: 'root'
 })
 export class AuthService {
+  
+  redirectUrl = "";
 
   constructor(private afAuth: AngularFireAuth) {
    }
@@ -20,11 +22,6 @@ export class AuthService {
       return  this.afAuth.auth.signOut();
   }
 
-  fuck() {
-    console.log("asshole");
-    
-  }
-
   signupWithEmail(email: string, password: string) {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password);
   }
@@ -33,9 +30,14 @@ export class AuthService {
     return this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
   }
 
+  get userID() {
+    return this.afAuth.auth.currentUser.uid;
+  }
+
   get userObservable() {
     return this.afAuth.user;
   }
+
   getCurrentUser(){
     return new Promise<any>((resolve, reject) => {
       var user = this.afAuth.auth.onAuthStateChanged( user => {

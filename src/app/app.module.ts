@@ -14,7 +14,7 @@ import { SwiperModule, SwiperNavigationInterface, SwiperPaginationInterface } fr
 import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 
-import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
 import { MaterialModule } from './shared/modules/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SidenavComponent } from './views/sidenav/sidenav.component';
@@ -108,7 +108,7 @@ const perfect_scroll_provider =     {
   providers: [
     swiper_provider,
     perfect_scroll_provider,
-    AngularFirestore
+    { provide: FirestoreSettingsToken, useValue: {} },
   ],
   bootstrap: [AppComponent]
 })

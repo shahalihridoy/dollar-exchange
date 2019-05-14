@@ -46,15 +46,16 @@ export class Signin4Component implements OnInit {
           this.signupForm.get("password").value
         )
         .catch(error => {
+          this.isSigningUp = false;
           this.snackbar.open(error, "", {
             duration: 5000
           });
+          throw error;
         })
         .then(() => {
           if (this.afAuth.user) {
-            this.router.navigateByUrl("");
+            this.router.navigateByUrl(this.authService.redirectUrl);
           }
-
           this.isSigningUp = false;
         });
     }
@@ -64,7 +65,7 @@ export class Signin4Component implements OnInit {
 
 signinWithGoogle() {
   this.authService.signInWithGoogle().then(res => {
-    this.router.navigateByUrl("");
+    this.router.navigateByUrl(this.authService.redirectUrl);
   });
 }
 }

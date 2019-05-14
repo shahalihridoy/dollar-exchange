@@ -27,7 +27,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Promise<boolean>{
-    return  this.getUserAuthentication();
+    return  this.getUserAuthentication(state.url);
   }
 
 
@@ -43,7 +43,8 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
     return this.getUserAuthentication();
   }
 
-  getUserAuthentication() : Promise<boolean> {
+  getUserAuthentication(url?: string) : Promise<boolean> {
+    this.authService.redirectUrl = url;
     return new Promise((resolve, reject) => {
       this.authService.getCurrentUser()
       .then(user => {

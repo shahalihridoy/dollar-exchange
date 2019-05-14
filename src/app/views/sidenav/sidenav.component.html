@@ -1,6 +1,6 @@
 <perfect-scrollbar class="ps" style="height: 100vh;" [config]="">
   <div fxLayout="column" class="sidenav-container">
-    
+
     <!-- close icon -->
     <div class="close-button">
       <button mat-icon-button color="warn" (click)="sidenav.toggle()">
@@ -18,12 +18,13 @@
 
     <!-- navigation links -->
     <div fxLayout="column" fxLayoutAlign="start" class="sidenav-link">
-      <!-- <a routerLink="" routerLinkActive="active" mat-button (click)="sidenav.toggle()">Home</a> -->
-      <a routerLink="/car-list" routerLinkActive="active" mat-button (click)="sidenav.toggle()">car list</a>
-      <a routerLink="/inspection-list" routerLinkActive="active" mat-button (click)="sidenav.toggle()">inspection list</a>
-      <a *ngIf="!(user | async)" routerLink="/sessions/signup" routerLinkActive="active" mat-button (click)="sidenav.toggle()">Sign up</a>
-      <a *ngIf="!(user | async)" routerLink="/sessions/signin" routerLinkActive="active" mat-button (click)="sidenav.toggle()">sign in</a>
-      <a *ngIf="(user | async)" mat-button (click)="signout()">sign out</a>
+      <a routerLink="home" (click)="sidenav.toggle()" mat-ripple><strong>home</strong></a>
+      <!-- <a routerLink="/inspection-list" mat-ripple><strong>proof</strong></a> -->
+      <a *ngIf="showOptions" (click)="scrollTo('service')" mat-ripple><strong>service</strong></a>
+      <a *ngIf="showOptions" (click)="scrollTo('pricing')" mat-ripple><strong>rate</strong></a>
+      <a routerLink="/exchange/buy" (click)="sidenav.toggle()" mat-ripple><strong>buy</strong></a>
+      <a routerLink="/exchange/sell" (click)="sidenav.toggle()" mat-ripple><strong>sell</strong></a>
+      <a *ngIf="showOptions" (click)="scrollTo('contact')" mat-ripple><strong>contact</strong></a>
     </div>
   </div>
 </perfect-scrollbar>

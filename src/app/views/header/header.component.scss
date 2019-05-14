@@ -32,13 +32,10 @@
 }
 
 .header {
-  // position: fixed;
-  // width: 100%;
-  // background: #fff;
+  background: #fff;
   transition: padding 0.3s bezier();
   -webkit-transition: padding 0.3s bezier();
   padding: 22px 0px;
-  // z-index: 1000;
 }
 
 .header-fixed {

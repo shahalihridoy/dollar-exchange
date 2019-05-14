@@ -15,7 +15,8 @@ import {
   animate
 } from "@angular/animations";
 import { AuthService } from "src/app/shared/services/auth.service";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: "app-header",
@@ -45,20 +46,22 @@ import { Router } from "@angular/router";
 })
 
 export class HeaderComponent implements OnInit, OnDestroy {
-  // tslint:disable-next-line: no-input-rename
+
   @Input("sidenav") sidenav: MatSidenav;
 
   mode: string;
   showSearchOption: boolean = false;
   sub: Subscription;
+  routeSub: Subscription;
+  showOptions: boolean = true;
 
-  searchControl: FormControl = new FormControl("");
   topBarClass: string = "header";
 
   constructor(
     private router: Router,
     private authService: AuthService,
-    public service: SharedService
+    private service: SharedService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
@@ -69,11 +72,22 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
     else this.sub.unsubscribe();
 
+    if(!this.routeSub) {
+      this.routeSub = this.router.events.pipe(
+        filter(event => event instanceof NavigationEnd)  
+      ).subscribe((event: NavigationEnd) => {
+        if(!(event.url as string).includes("exchange"))
+          this.showOptions = true;
+        else this.showOptions = false;
+      });
+      
+    } else this.routeSub.unsubscribe();
     // throw new Error("Method not implemented.");
   }
 
   ngOnDestroy() {
     if (this.sub) this.sub.unsubscribe();
+    if(this.routeSub) this.routeSub.unsubscribe();
   }
 
   get user() {
@@ -87,6 +101,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   scrollTo(id:string) {
-    this.service.perfectScrollbar.scrollToElement(`#${id}`,-104,500);
+    this.service.perfectScrollbar.update();
+    this.service.perfectScrollbar.scrollToElement(`#${id}`,-80,500);
   }
 }

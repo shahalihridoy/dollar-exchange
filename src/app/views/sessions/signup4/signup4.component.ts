@@ -3,8 +3,8 @@ import { Validators, FormBuilder, FormGroup } from "@angular/forms";
 import { AuthService } from "src/app/shared/services/auth.service";
 import { MatSnackBar } from "@angular/material";
 import { AngularFireAuth } from "@angular/fire/auth";
-import { throwError } from "rxjs";
 import { Router } from '@angular/router';
+import { SharedService } from 'src/app/shared/services/shared.service';
 
 @Component({
   selector: "app-signup4",
@@ -20,12 +20,13 @@ export class Signup4Component implements OnInit {
     private snackbar: MatSnackBar,
     private fb: FormBuilder,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private service: SharedService
   ) {}
 
   ngOnInit() {
     this.signupForm = this.fb.group({
-      username: ["", Validators.required],
+      name: ["", Validators.required],
       email: ["", [Validators.required, Validators.email]],
       password: ["", Validators.required],
       agreed: ["", Validators.required]
@@ -53,11 +54,14 @@ export class Signup4Component implements OnInit {
           if (!errorMessage) {
             this.afAuth.auth.currentUser
               .updateProfile({
-                displayName: this.signupForm.get("username").value
+                displayName: this.signupForm.get("name").value
               })
               .then(user => {
-                this.router.navigateByUrl("/car-list");
-                // console.log(this.afAuth.auth.currentUser.uid);
+                this.router.navigateByUrl("/home");
+                let userData = {...this.signupForm.value};
+                delete userData.agreed;
+                delete userData.password;
+                this.service.saveUserDetails(this.afAuth.auth.currentUser.uid, userData);
               });
           }
         })
