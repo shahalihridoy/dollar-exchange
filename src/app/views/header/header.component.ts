@@ -49,8 +49,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   @Input("sidenav") sidenav: MatSidenav;
 
-  mode: string;
-  showSearchOption: boolean = false;
   sub: Subscription;
   routeSub: Subscription;
   showOptions: boolean = true;
@@ -101,7 +99,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   scrollTo(id:string) {
-    this.service.perfectScrollbar.update();
-    this.service.perfectScrollbar.scrollToElement(`#${id}`,-80,500);
+    if(this.topBarClass === "header")
+      this.service.perfectScrollbar.scrollToElement(`#${id}`,-90,500);
+    else this.service.perfectScrollbar.scrollToElement(`#${id}`,0,500);
   }
 }

@@ -52,9 +52,10 @@ const swiper_pagination: SwiperPaginationInterface = {
 
 const swiper_config: SwiperConfigInterface = {
   autoplay: {
-    delay: 6000,
+    delay: 4000,
     disableOnInteraction: false
   },
+  autoHeight: false,
   initialSlide: 0,
   slidesPerView: 1,
   lazy: true,

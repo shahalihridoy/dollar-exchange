@@ -1,6 +1,6 @@
 <div class="swiper-container" [swiper]={}>
-  <div *ngIf="sliderList" class="swiper-wrapper">
-    <div *ngFor="let slide of sliderList | async" class="swiper-slide grey-25">
+  <div class="swiper-wrapper">
+    <div *ngFor="let slide of sliderList" class="swiper-slide grey-25">
       <!-- Required swiper-lazy class and image source specified in data-src attribute -->
       <img data-src={{slide?.imageUrl}} class="swiper-lazy">
       <!-- Preloader image -->
