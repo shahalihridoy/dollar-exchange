@@ -55,7 +55,7 @@ const swiper_config: SwiperConfigInterface = {
     delay: 4000,
     disableOnInteraction: false
   },
-  autoHeight: false,
+  autoHeight: true,
   initialSlide: 0,
   slidesPerView: 1,
   lazy: true,

@@ -6,12 +6,3 @@
 .mat-drawer-content {
   overflow: hidden;
 }
-
-.carousel-holder {
-  position: relative;
-  height: 570px;
-
-  @media screen and (max-width: 570px) {
-    height: 270px;
-  }
-}

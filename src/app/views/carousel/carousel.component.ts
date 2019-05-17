@@ -11,19 +11,11 @@ import { SwiperDirective } from 'ngx-swiper-wrapper';
 
 export class CarouselComponent implements OnInit, OnDestroy {
 
-  sliderList: any = [
-    {
-      imageUrl: "./assets/images/1.jpg"
-    },
-    {
-      imageUrl: "./assets/images/2.jpg"
-    },
-    {
-      imageUrl: "./assets/images/3.jpg"
-    },
-  ];
-  @ViewChild(SwiperDirective) swiper: SwiperDirective;
+  sliderList: any[] = [];
   sub: Subscription;
+
+  @ViewChild(SwiperDirective) swiper: SwiperDirective;
+
   constructor(private service: SharedService) { }
 
   ngOnInit() {

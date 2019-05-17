@@ -1,6 +1,6 @@
 <div class="section">
   <div class="container">
-    <mat-vertical-stepper #stepper>
+    <mat-vertical-stepper #stepper linear>
 
       <mat-step [stepControl]="firstFormGroup" label="Payment Method" state="balance">
         <form fxLayout="column" [formGroup]="firstFormGroup">

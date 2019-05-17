@@ -103,4 +103,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
       this.service.perfectScrollbar.scrollToElement(`#${id}`,-90,500);
     else this.service.perfectScrollbar.scrollToElement(`#${id}`,0,500);
   }
+
+  scrollTop() {
+    this.service.perfectScrollbar.scrollToTop(0,500);
+  }
 }

@@ -1,8 +1,10 @@
 @import "../../shared/styles/mixins.scss";
 
 .mobile-toolbar {
+  position: fixed;
   color: white;
   padding-left: 8px;
+  z-index: 2;
 }
 
 .app-name {

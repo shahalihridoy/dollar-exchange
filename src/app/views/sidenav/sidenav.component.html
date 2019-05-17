@@ -17,14 +17,30 @@
     <mat-divider></mat-divider>
 
     <!-- navigation links -->
-    <div fxLayout="column" fxLayoutAlign="start" class="sidenav-link">
-      <a routerLink="home" (click)="sidenav.toggle()" mat-ripple><strong>home</strong></a>
+    <div fxLayout="column" fxFlex="1 1 0" fxLayoutAlign="start" class="sidenav-link">
+      <a routerLink="" (click)="scrollTop();sidenav.toggle()" mat-ripple><strong>home</strong></a>
       <!-- <a routerLink="/inspection-list" mat-ripple><strong>proof</strong></a> -->
       <a *ngIf="showOptions" (click)="scrollTo('service')" mat-ripple><strong>service</strong></a>
       <a *ngIf="showOptions" (click)="scrollTo('pricing')" mat-ripple><strong>rate</strong></a>
       <a routerLink="/exchange/buy" (click)="sidenav.toggle()" mat-ripple><strong>buy</strong></a>
       <a routerLink="/exchange/sell" (click)="sidenav.toggle()" mat-ripple><strong>sell</strong></a>
       <a *ngIf="showOptions" (click)="scrollTo('contact')" mat-ripple><strong>contact</strong></a>
+    </div>
+
+    <div fxLayout="row" fxLayoutGap="16px">
+      <a *ngIf="!(user | async)" class="sign-link" routerLink="/sessions/signin" fxFlex="50"
+        (click)="sidenav.toggle()"><strong>Sign
+          In</strong></a>
+      <a *ngIf="!(user | async)" class="sign-link" routerLink="/sessions/signup" fxFlex="50"
+        (click)="sidenav.toggle()"><strong>Sign
+          Up</strong></a>
+      <a fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="8px" *ngIf="user | async" class="sign-link"
+        (click)="signout()">
+        <mat-icon>power_settings_new</mat-icon>
+        <strong>
+          Sign Out
+        </strong>
+      </a>
     </div>
   </div>
 </perfect-scrollbar>

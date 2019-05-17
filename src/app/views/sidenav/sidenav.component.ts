@@ -50,4 +50,8 @@ export class SidenavComponent implements OnInit, OnDestroy {
     this.sidenav.toggle();
     this.service.perfectScrollbar.scrollToElement(`#${id}`,0,500);
   }
+
+  scrollTop() {
+    this.service.perfectScrollbar.scrollToTop(0,500);
+  }
 }
