@@ -18,11 +18,21 @@
   margin: 0 auto;
   text-transform: capitalize;
 
+  transition: height 3s #{bezier()};
+  -webkit-transition: height 0.3s #{bezier()};
+  -o-transition: height 0.3s #{bezier()};
+  -moz-transition: height 0.3s #{bezier()};
+
   a {
     font-size: 14px;
     color: inherit;
-    padding: 16px 8px;
+    padding: 8px 16px;
     font-weight: 400;
+    border-radius: 4px;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.15);
+    }
   }
 
   .home-link {
@@ -35,15 +45,13 @@
 
 .header {
   background: #fff;
-  transition: padding 0.3s bezier();
-  -webkit-transition: padding 0.3s bezier();
-  padding: 22px 0px;
+  padding: 25px 0px;
 }
 
 .header-fixed {
   position: fixed;
   width: 100%;
-  padding: 8px 0px;
+  padding: 16px 0px;
   background: #fff;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
   z-index: 1000;
@@ -55,5 +63,5 @@
       top: 0px;
     }
   }
-  animation: slide_down 250ms bezier();
+  animation: slide_down 250ms #{bezier()};
 }

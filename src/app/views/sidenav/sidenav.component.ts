@@ -39,7 +39,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
   signout() {
     this.authService.logout();
     this.sidenav.toggle();
-    this.router.navigateByUrl("");
+    this.router.navigateByUrl("/home");
   }
 
   get user() {

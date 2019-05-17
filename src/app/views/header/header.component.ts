@@ -100,7 +100,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   scrollTo(id:string) {
     if(this.topBarClass === "header")
-      this.service.perfectScrollbar.scrollToElement(`#${id}`,-90,500);
+      this.service.perfectScrollbar.scrollToElement(`#${id}`,-80,500);
     else this.service.perfectScrollbar.scrollToElement(`#${id}`,0,500);
   }
 
