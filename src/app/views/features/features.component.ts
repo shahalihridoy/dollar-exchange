@@ -9,22 +9,21 @@ export class FeaturesComponent implements OnInit {
 
   cardList = [
     {
-      icon: "restore",
-      text: "Money Back Guarantee"
+      icon: "account_balance",
+      text: "Buy"
+    },
+    {
+      icon: "payment",
+      text: "Sell"
+    },
+    {
+      icon: "swap_horiz",
+      text: "Exchange"
     },
     {
       icon: "call",
       text: "01992057252"
-    },
-    {
-      icon: "security",
-      text: "Highly Secured"
-    },
-    {
-      icon: "chat",
-      text: "Live Chat"
-    },
-
+    }
   ]
   constructor() { }
 

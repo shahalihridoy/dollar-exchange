@@ -30,6 +30,10 @@ export class AuthService {
     return this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
   }
 
+  requestPasswordChange(email: string) {
+    return this.afAuth.auth.sendPasswordResetEmail(email);
+  }
+
   get userID() {
     return this.afAuth.auth.currentUser.uid;
   }

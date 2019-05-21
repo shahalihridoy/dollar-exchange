@@ -23,16 +23,16 @@ export class SharedService {
     return this.afs.collection("/sliderImage").valueChanges();
   }
 
+  get transactionList() {
+    return this.afs.collection("/transaction",ref => ref.orderBy("date",'desc').limit(10)).valueChanges();
+  }
+
   saveUserDetails(uid: string, data: {}) {
     this.afs.collection("/users").doc(uid).set(data);
   }
 
-  requestSell(uid: string, data: {}) {
-    this.afs.collection("/sell").doc(uid).set(data);
-  }
-
-  requestBuy(uid: string, data: {}) {
-    this.afs.collection("/buy").doc(uid).set(data);
+  requestTransaction(uid: string, data: {}) {
+    this.afs.collection("/transaction").doc(uid).set(data);
   }
 
   sendMessage(data: {}) {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { SharedService } from 'src/app/shared/services/shared.service';
 import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-buy',
@@ -15,12 +16,15 @@ export class BuyComponent implements OnInit {
   exchangeRate: any;
   sub: Subscription;
 
-  constructor(private fb: FormBuilder, private service: SharedService) {}
+  paymentMethodList = ["brac bank","dbbl","rocket","bkash"];
+  receivingMethodList = ["neteller","perfect money","payoneer","web money","avcash"];
+
+  constructor(private authService: AuthService,private fb: FormBuilder, private service: SharedService) {}
 
   ngOnInit() {
     this.firstFormGroup = this.fb.group({
-      from: ["bkash",[Validators.required]],
-      to: ["skrill",[Validators.required]],
+      from: [this.paymentMethodList[0],[Validators.required]],
+      to: [this.receivingMethodList[0],[Validators.required]],
       amount: ["",[Validators.required]],
     });
 
@@ -32,6 +36,14 @@ export class BuyComponent implements OnInit {
     });
     
     this.exchangeRate = this.service.getExchangeRate;
+  }
+
+  requestTransaction() {
+    if(this.secondFormGroup.valid) {
+      let data = {...this.firstFormGroup.value,...this.secondFormGroup.value,date: new Date().toDateString(),status: "processing"};
+      let uid = this.authService.userID;
+      this.service.requestTransaction(uid,data);
+    }
   }
 
   get From() {

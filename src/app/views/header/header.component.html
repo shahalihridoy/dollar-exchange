@@ -19,6 +19,7 @@
             <a routerLink="" mat-ripple (click)="scrollTop()"><strong>home</strong></a>
             <!-- <a routerLink="/inspection-list" mat-ripple><strong>proof</strong></a> -->
             <a *ngIf="showOptions" (click)="scrollTo('service')" mat-ripple><strong>service</strong></a>
+            <a *ngIf="showOptions" (click)="scrollTo('proof')" mat-ripple><strong>proof</strong></a>
             <a *ngIf="showOptions" (click)="scrollTo('pricing')" mat-ripple><strong>rate</strong></a>
             <a routerLink="/exchange/buy" mat-ripple><strong>buy</strong></a>
             <a routerLink="/exchange/sell" mat-ripple><strong>sell</strong></a>

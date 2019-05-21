@@ -15,12 +15,15 @@ export class SellComponent implements OnInit {
   secondFormGroup: FormGroup;
   exchangeRate: any;
 
+  paymentMethodList = ["neteller","perfect money","payoneer","web money","avcash"];
+  receivingMethodList = ["brac bank","dbbl","rocket","bkash"];
+
   constructor(private fb: FormBuilder, private service: SharedService, private authService: AuthService) {}
 
   ngOnInit() {
     this.firstFormGroup = this.fb.group({
-      from: ["skrill",[Validators.required]],
-      to: ["bkash",[Validators.required]],
+      from: [this.paymentMethodList[0],[Validators.required]],
+      to: [this.receivingMethodList[0],[Validators.required]],
       amount: ["",[Validators.required]],
     });
 
@@ -30,14 +33,16 @@ export class SellComponent implements OnInit {
       email: ["",[Validators.required,Validators.email]],
     });
 
+    // replace space with underscore in methodlist for icon link web_money.png
+    // this.paymentMethodList[0].replace(" ","_")
     this.exchangeRate = this.service.getExchangeRate;
   }
 
-  requestSell() {
+  requestTransaction() {
     if(this.secondFormGroup.valid) {
-      let data = {...this.firstFormGroup.value,...this.secondFormGroup.value};
+      let data = {...this.firstFormGroup.value,...this.secondFormGroup.value,date: new Date().toDateString(), status: "processing"};
       let uid = this.authService.userID;
-      this.service.requestSell(uid,data);
+      this.service.requestTransaction(uid,data);
     }
   }
 

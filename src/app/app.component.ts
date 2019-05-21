@@ -1,8 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SharedService } from 'src/app/shared/services/shared.service';
 import { PerfectScrollbarDirective } from 'ngx-perfect-scrollbar';
-import { fromEvent } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +12,7 @@ export class AppComponent implements OnInit {
 
   @ViewChild(PerfectScrollbarDirective) perfectScrollbar: PerfectScrollbarDirective;
   rejectCall: boolean = false;
-
+  timer;
   constructor(private sharedService: SharedService) {
    }
 
@@ -35,14 +33,13 @@ export class AppComponent implements OnInit {
     //   }, 500);
     // }
 
-    let timer;
-    clearTimeout(timer);
-    timer = setTimeout(() => {
+    clearTimeout(this.timer);
+    this.timer = setTimeout(() => {
               let { scrollTop } = event.target;
         scrollTop > 100 ?
           this.sharedService.topBarListener.next(true):
           this.sharedService.topBarListener.next(false)
-    }, 250);
+    }, 200);
 
   }
 

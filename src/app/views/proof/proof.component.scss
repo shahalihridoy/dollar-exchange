@@ -1,0 +1,12 @@
+.proof-table-container {
+  position: relative;
+  overflow: auto;
+  .proof-table {
+    width: 100%;
+    min-width: 800px;
+    img {
+      vertical-align: middle;
+      padding-right: 4px;
+    }
+  }
+}

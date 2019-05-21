@@ -8,15 +8,14 @@
 
           <mat-form-field>
             <mat-select #receivingMethod placeholder="Payment Method" formControlName="from">
-              <mat-option value="skrill">Skrill</mat-option>
-              <mat-option value="neteller">Neteller</mat-option>
+              <mat-option *ngFor="let option of paymentMethodList" value={{option}}>{{option  | titlecase}}</mat-option>
             </mat-select>
           </mat-form-field>
 
           <mat-form-field>
             <mat-select placeholder="Receiving Method" formControlName="to">
-              <mat-option value="bkash">bKash</mat-option>
-              <mat-option value="rocket">Rocket</mat-option>
+              <mat-option *ngFor="let option of receivingMethodList" value={{option}}>{{option  | titlecase}}
+              </mat-option>
             </mat-select>
           </mat-form-field>
 
@@ -37,7 +36,7 @@
       </mat-step>
 
       <mat-step [stepControl]="secondFormGroup" label="Transaction Details" state="payment">
-        <form fxLayout="column" [formGroup]="secondFormGroup" (ngSubmit)="requestSell()">
+        <form fxLayout="column" [formGroup]="secondFormGroup" (ngSubmit)="requestTransaction()">
           <ng-template matStepLabel>Transaction Details</ng-template>
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Recipient {{To}} Number</mat-label>

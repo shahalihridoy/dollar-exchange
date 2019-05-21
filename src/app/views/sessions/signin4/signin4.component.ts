@@ -63,9 +63,16 @@ export class Signin4Component implements OnInit {
     this.snackbar.open("Please, fill the form correctly",'',{duration: 5000});
   }
 
-signinWithGoogle() {
-  this.authService.signInWithGoogle().then(res => {
-    this.router.navigateByUrl(this.authService.redirectUrl);
-  });
-}
+  requestPasswordChange() {
+    let email = this.signupForm.get('email').value;
+    if(email) {
+      this.authService.requestPasswordChange(email).catch(error => {
+        this.snackbar.open(error,'',{duration: 5000});
+        throw error;
+      }).then(()=>{
+        this.snackbar.open("Password is sent to your email",'',{duration: 5000});
+      })
+    } else this.snackbar.open("Please, type your email above",'',{duration: 5000});
+  }
+
 }
