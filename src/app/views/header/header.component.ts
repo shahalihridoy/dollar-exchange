@@ -2,18 +2,13 @@ import {
   Component,
   OnInit,
   Input,
-  OnDestroy
+  OnDestroy,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef
 } from "@angular/core";
 import { MatSidenav } from "@angular/material";
 import { Subscription } from "rxjs";
 import { SharedService } from "src/app/shared/services/shared.service";
-import { FormControl } from "@angular/forms";
-import {
-  trigger,
-  transition,
-  style,
-  animate
-} from "@angular/animations";
 import { AuthService } from "src/app/shared/services/auth.service";
 import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
 import { filter } from 'rxjs/operators';
@@ -22,27 +17,7 @@ import { filter } from 'rxjs/operators';
   selector: "app-header",
   templateUrl: "./header.component.html",
   styleUrls: ["./header.component.scss"],
-  animations: [
-    trigger("slide", [
-      transition("void => *", [
-        style({
-          height: "0px",
-          overflow: "hidden"
-        }),
-        animate(150)
-      ]),
-
-      transition("* => void", [
-        animate(
-          150,
-          style({
-            height: "0px",
-            overflow: "hidden"
-          })
-        )
-      ])
-    ])
-  ]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class HeaderComponent implements OnInit, OnDestroy {
@@ -59,13 +34,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private router: Router,
     private authService: AuthService,
     private service: SharedService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
     if (!this.sub) {
       this.sub = this.service.topBarListener.subscribe(isFixed => {
-        isFixed ? this.topBarClass = "header-fixed" : this.topBarClass = "header"
+        isFixed ? this.topBarClass = "header-fixed" : this.topBarClass = "header";
+        this.cdr.markForCheck();
       })
     }
     else this.sub.unsubscribe();
@@ -78,7 +55,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
           this.showOptions = true;
         else this.showOptions = false;
       });
-      
+      this.cdr.markForCheck();
     } else this.routeSub.unsubscribe();
     // throw new Error("Method not implemented.");
   }

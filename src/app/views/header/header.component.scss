@@ -35,12 +35,12 @@
     outline: none;
   }
 
-  z-index: 1000;
+  z-index: 1;
 }
 
 .header {
   background: #fff;
-  transition: padding 3s #{bezier()};
+  transition: padding 0.3s #{bezier()};
   -webkit-transition: padding 0.3s #{bezier()};
   -o-transition: padding 0.3s #{bezier()};
   -moz-transition: padding 0.3s #{bezier()};
@@ -62,5 +62,5 @@
       top: 0px;
     }
   }
-  animation: slide_down 250ms #{bezier()};
+  animation: slide_down 0.1s #{bezier()};
 }
