@@ -17,7 +17,7 @@ export class BuyComponent implements OnInit {
   sub: Subscription;
 
   paymentMethodList = ["brac bank","dbbl","rocket","bkash"];
-  receivingMethodList = ["neteller","perfect money","payoneer","web money","avcash"];
+  receivingMethodList = ["skrill","neteller","perfect money","payoneer","web money","avcash"];
 
   constructor(private authService: AuthService,private fb: FormBuilder, private service: SharedService) {}
 
@@ -40,7 +40,7 @@ export class BuyComponent implements OnInit {
 
   requestTransaction() {
     if(this.secondFormGroup.valid) {
-      let data = {...this.firstFormGroup.value,...this.secondFormGroup.value,date: new Date().toDateString(),status: "processing"};
+      let data = {...this.firstFormGroup.value,...this.secondFormGroup.value,currency: "Taka",date: new Date().toDateString(),status: "processing"};
       let uid = this.authService.userID;
       this.service.requestTransaction(uid,data);
     }

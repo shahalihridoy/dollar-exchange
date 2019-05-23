@@ -54,8 +54,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
         if(!(event.url as string).includes("exchange"))
           this.showOptions = true;
         else this.showOptions = false;
+        this.cdr.markForCheck();
       });
-      this.cdr.markForCheck();
     } else this.routeSub.unsubscribe();
     // throw new Error("Method not implemented.");
   }

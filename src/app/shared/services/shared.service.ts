@@ -24,7 +24,7 @@ export class SharedService {
   }
 
   get transactionList() {
-    return this.afs.collection("/transaction",ref => ref.orderBy("date",'desc').limit(10)).valueChanges();
+    return this.afs.collection("/transaction",ref => ref.orderBy("date",'asc').limit(10)).valueChanges();
   }
 
   saveUserDetails(uid: string, data: {}) {
