@@ -20,13 +20,13 @@
           </mat-form-field>
 
           <mat-form-field class="full-width">
-            <mat-label>Amount</mat-label>
+            <mat-label>Buying Amount</mat-label>
             <input matInput type="number" placeholder="100" formControlName="amount">
-            <span matPrefix>Taka&nbsp;</span>
+            <span matPrefix>$&nbsp;</span>
           </mat-form-field>
 
           <mat-form-field *ngIf="Amount" class="full-width" appearance="outline">
-            <mat-label>You will get $ {{Amount ? Amount/(exchangeRate|async)?.sell : 0}}</mat-label>
+            <mat-label>You have to pay {{Amount ? Amount*(exchangeRate|async)?.sell : 0}} taka</mat-label>
             <input matInput type="number" placeholder="100" readonly="true">
           </mat-form-field>
 

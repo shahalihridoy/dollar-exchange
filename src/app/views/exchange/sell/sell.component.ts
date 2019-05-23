@@ -39,7 +39,7 @@ export class SellComponent implements OnInit {
 
   requestTransaction() {
     if(this.secondFormGroup.valid) {
-      let data = {...this.firstFormGroup.value,...this.secondFormGroup.value,currency: "$",date: new Date().toDateString(), status: "processing"};
+      let data = {...this.firstFormGroup.value,...this.secondFormGroup.value,date: new Date().toDateString(), status: "processing"};
       let uid = this.authService.userID;
       this.service.requestTransaction(uid,data);
     }
