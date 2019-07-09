@@ -16,6 +16,7 @@ export class BuyComponent implements OnInit {
   exchangeRate: any;
   sub: Subscription;
 
+  paymentMediumList;
   paymentMethodList = ["brac bank","dbbl","rocket","bkash"];
   receivingMethodList = ["skrill","neteller","perfect money","payoneer","web money","avcash"];
 
@@ -36,6 +37,7 @@ export class BuyComponent implements OnInit {
     });
     
     this.exchangeRate = this.service.getExchangeRate;
+    this.paymentMediumList = this.service.paymentMediumList;
   }
 
   requestTransaction() {
@@ -50,6 +52,7 @@ export class BuyComponent implements OnInit {
     let fromValue = this.firstFormGroup.get("from").value as string;
     return fromValue[0].toUpperCase()+fromValue.substr(1);
   }
+  
   get To() {
     let toValue = this.firstFormGroup.get("to").value as string;
     return toValue[0].toUpperCase()+toValue.substr(1);

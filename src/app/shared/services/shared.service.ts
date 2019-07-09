@@ -27,6 +27,10 @@ export class SharedService {
     return this.afs.collection("/transaction",ref => ref.orderBy("date",'asc').limit(10)).valueChanges();
   }
 
+  get paymentMediumList() {
+    return this.afs.collection("/paymentMedium").doc("payment").valueChanges();
+  }
+
   saveUserDetails(uid: string, data: {}) {
     this.afs.collection("/users").doc(uid).set(data);
   }
@@ -38,5 +42,7 @@ export class SharedService {
   sendMessage(data: {}) {
     return this.afs.collection("/messages").add(data);
   }
+
+
 
 }

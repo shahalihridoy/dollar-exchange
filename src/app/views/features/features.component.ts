@@ -1,12 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-features',
-  templateUrl: './features.component.html',
-  styleUrls: ['./features.component.scss']
+  selector: "app-features",
+  templateUrl: "./features.component.html",
+  styleUrls: ["./features.component.scss"]
 })
 export class FeaturesComponent implements OnInit {
-
   cardList = [
     {
       icon: "account_balance",
@@ -22,12 +21,10 @@ export class FeaturesComponent implements OnInit {
     },
     {
       icon: "call",
-      text: "01992057252"
+      text: "01537594097"
     }
-  ]
-  constructor() { }
+  ];
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

@@ -1,33 +1,60 @@
 <div class="section">
   <div class="container">
     <mat-vertical-stepper #stepper linear>
-
-      <mat-step [stepControl]="firstFormGroup" label="Payment Method" state="balance">
+      <mat-step
+        [stepControl]="firstFormGroup"
+        label="Payment Method"
+        state="balance"
+      >
         <form fxLayout="column" [formGroup]="firstFormGroup">
           <ng-template matStepLabel>Payment Details</ng-template>
 
           <mat-form-field>
             <mat-select placeholder="Payment Method" formControlName="from">
-              <mat-option *ngFor="let option of paymentMethodList" value={{option}}>{{option | titlecase}}</mat-option>
+              <mat-option
+                *ngFor="let option of paymentMethodList"
+                value="{{ option }}"
+                >{{ option | titlecase }}</mat-option
+              >
             </mat-select>
           </mat-form-field>
 
           <mat-form-field>
             <mat-select placeholder="Receiving Method" formControlName="to">
-              <mat-option *ngFor="let option of receivingMethodList" value={{option}}>{{option  | titlecase}}
+              <mat-option
+                *ngFor="let option of receivingMethodList"
+                value="{{ option }}"
+                >{{ option | titlecase }}
               </mat-option>
             </mat-select>
           </mat-form-field>
 
           <mat-form-field class="full-width">
             <mat-label>Buying Amount</mat-label>
-            <input matInput type="number" placeholder="100" formControlName="amount">
+            <input
+              matInput
+              type="number"
+              placeholder="100"
+              formControlName="amount"
+            />
             <span matPrefix>$&nbsp;</span>
           </mat-form-field>
 
-          <mat-form-field *ngIf="Amount" class="full-width" appearance="outline">
-            <mat-label>You have to pay {{Amount ? Amount*(exchangeRate|async)?.sell : 0}} taka</mat-label>
-            <input matInput type="number" placeholder="100" readonly="true">
+          <mat-form-field
+            *ngIf="Amount"
+            class="full-width"
+            appearance="outline"
+          >
+            <textarea
+              readonly="true"
+              matInput
+              matTextareaAutosize
+              placeholder="Your message..."
+            >
+Pay {{ Amount ? Amount * (exchangeRate | async)?.sell : 0 }} taka to {{
+                (paymentMediumList | async)[firstFormGroup.get("from").value]
+              }}</textarea
+            >
           </mat-form-field>
 
           <div>
@@ -36,25 +63,52 @@
         </form>
       </mat-step>
 
-
-      <mat-step [stepControl]="secondFormGroup" label="Transaction Details" state="payment">
-        <form fxLayout="column" [formGroup]="secondFormGroup" (ngSubmit)="requestTransaction()">
+      <mat-step
+        [stepControl]="secondFormGroup"
+        label="Transaction Details"
+        state="payment"
+      >
+        <form
+          fxLayout="column"
+          [formGroup]="secondFormGroup"
+          (ngSubmit)="requestTransaction()"
+        >
           <ng-template matStepLabel>Transaction Details</ng-template>
           <mat-form-field class="full-width" appearance="outline">
-            <mat-label>Sender {{From}} Number</mat-label>
-            <input matInput type="text" placeholder="01XXXXXXXXX" formControlName="sender">
+            <mat-label>Sender {{ From }} Number</mat-label>
+            <input
+              matInput
+              type="text"
+              placeholder="01XXXXXXXXX"
+              formControlName="sender"
+            />
           </mat-form-field>
           <mat-form-field class="full-width" appearance="outline">
-            <mat-label>Recipient {{To}} Email</mat-label>
-            <input matInput type="email" placeholder="dollar-exchange@xmail.com" formControlName="email">
+            <mat-label>Recipient {{ To }} Email</mat-label>
+            <input
+              matInput
+              type="email"
+              placeholder="dollar-exchange@xmail.com"
+              formControlName="email"
+            />
           </mat-form-field>
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Transaction ID</mat-label>
-            <input matInput type="text" placeholder="Transaction ID" formControlName="transactionID">
+            <input
+              matInput
+              type="text"
+              placeholder="Transaction ID"
+              formControlName="transactionID"
+            />
           </mat-form-field>
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Contact Number</mat-label>
-            <input matInput type="text" placeholder="01XXXXXXXXX" formControlName="contact">
+            <input
+              matInput
+              type="text"
+              placeholder="01XXXXXXXXX"
+              formControlName="contact"
+            />
           </mat-form-field>
           <!-- <div>
             <button mat-button matStepperNext>Next</button>
@@ -62,13 +116,15 @@
 
           <div class="mt-16">
             <button mat-button type="button" matStepperPrevious>Back</button>
-            <button mat-button type="button" (click)="stepper.reset()">Reset</button>
-            <button mat-raised-button matStepperNext color="primary">Submit</button>
+            <button mat-button type="button" (click)="stepper.reset()">
+              Reset
+            </button>
+            <button mat-raised-button matStepperNext color="primary">
+              Submit
+            </button>
           </div>
-
         </form>
       </mat-step>
-
 
       <mat-step label="Done" state="done">
         <ng-template matStepLabel>Done</ng-template>
@@ -85,7 +141,6 @@
       <ng-template matStepperIcon="done">
         <mat-icon>done</mat-icon>
       </ng-template>
-
     </mat-vertical-stepper>
   </div>
 </div>
